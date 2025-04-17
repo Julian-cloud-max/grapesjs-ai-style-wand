@@ -1,0 +1,45 @@
+{
+  "name": "grapesjs-ai-style-wand",
+  "version": "1.0.0",
+  "description": "GrapesJS插件 - AI样式魔法棒：通过自然语言描述轻松设置组件样式",
+  "main": "dist/grapesjs-ai-style-wand.min.js",
+  "scripts": {
+    "start": "webpack --watch",
+    "build": "webpack --mode=production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "grapesjs",
+    "plugin",
+    "ai",
+    "style",
+    "wand",
+    "magic",
+    "styling"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "grapesjs": "^0.19.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.7.3",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "peerDependencies": {
+    "grapesjs": "^0.19.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/grapesjs-ai-style-wand.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/grapesjs-ai-style-wand/issues"
+  },
+  "homepage": "https://github.com/yourusername/grapesjs-ai-style-wand#readme"
+}

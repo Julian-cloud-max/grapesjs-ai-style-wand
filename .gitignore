@@ -1,0 +1,32 @@
+# 依赖目录
+node_modules/
+
+# 构建输出
+# dist/
+# 注释掉是为了允许将构建输出提交到仓库
+
+# 日志
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# 编辑器目录和文件
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# 环境变量
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 缓存目录
+.npm
+.eslintcache 

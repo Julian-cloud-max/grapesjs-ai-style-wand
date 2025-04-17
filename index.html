@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GrapesJS AI Style Wand 插件示例</title>
+  
+  <!-- GrapesJS 样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/grapesjs/dist/css/grapes.min.css">
+  
+  <!-- 加载 Font Awesome 图标 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+    
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .header {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .header h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+    
+    #editor-container {
+      flex: 1;
+      position: relative;
+    }
+    
+    .panel__top {
+      padding: 0;
+      width: 100%;
+      display: flex;
+      position: initial;
+      justify-content: center;
+      justify-content: space-between;
+    }
+    
+    .panel__basic-actions {
+      position: initial;
+    }
+    
+    .panel__devices {
+      position: initial;
+    }
+    
+    .panel__switcher {
+      position: initial;
+    }
+    
+    .editor-row {
+      display: flex;
+      justify-content: flex-start;
+      align-items: stretch;
+      flex-wrap: nowrap;
+      height: 100%;
+    }
+    
+    .editor-canvas {
+      flex-grow: 1;
+    }
+    
+    .panel__right {
+      flex-basis: 230px;
+      position: relative;
+      overflow-y: auto;
+    }
+    
+    /* 提示信息 */
+    .help-message {
+      background-color: #fafad2;
+      padding: 15px;
+      margin: 10px 0;
+      border-left: 4px solid #ffd700;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div class="header">
+      <h1>GrapesJS AI Style Wand 插件示例</h1>
+    </div>
+    
+    <div class="help-message">
+      <p><strong>如何使用魔法棒：</strong> 点击任意组件后，在组件上方会出现魔法棒图标，点击它可以输入样式描述。</p>
+    </div>
+    
+    <div class="panel__top">
+      <div class="panel__basic-actions"></div>
+      <div class="panel__devices"></div>
+      <div class="panel__switcher"></div>
+    </div>
+    
+    <div class="editor-row">
+      <div class="editor-canvas">
+        <div id="editor-container"></div>
+      </div>
+      <div class="panel__right"></div>
+    </div>
+  </div>
+  
+  <!-- 加载 GrapesJS -->
+  <script src="https://unpkg.com/grapesjs"></script>
+  
+  <!-- 加载我们的插件 -->
+  <script src="./dist/grapesjs-ai-style-wand.min.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const editor = grapesjs.init({
+        container: '#editor-container',
+        height: '100%',
+        fromElement: false,
+        storageManager: false,
+        plugins: ['grapesjs-ai-style-wand'],
+        pluginsOpts: {
+          'grapesjs-ai-style-wand': {
+            // 可选配置
+            modalTitle: 'AI样式魔法棒',
+            placeholder: '请输入你想要的样式效果，例如："红色大字按钮样式"...'
+          }
+        },
+        blockManager: {
+          appendTo: '.panel__right',
+          blocks: [
+            {
+              id: 'section',
+              label: '区块',
+              category: '基础组件',
+              content: `<section style="padding: 50px; background-color: #f8f9fa;">
+                <h2 style="margin-top: 0;">这是一个区块标题</h2>
+                <p>点击这个组件，然后查看组件上方工具栏中的魔法棒图标！</p>
+              </section>`,
+            },
+            {
+              id: 'text',
+              label: '文本',
+              category: '基础组件',
+              content: '<div data-gjs-type="text">点击这个文本，然后尝试AI样式魔法棒！</div>',
+            },
+            {
+              id: 'button',
+              label: '按钮',
+              category: '基础组件',
+              content: '<button class="button">点击尝试魔法棒</button>',
+            },
+            {
+              id: 'image',
+              label: '图片',
+              category: '基础组件',
+              content: { type: 'image' },
+            },
+          ]
+        },
+        deviceManager: {
+          devices: [
+            {
+              id: 'desktop',
+              name: '桌面',
+              width: '',
+            },
+            {
+              id: 'tablet',
+              name: '平板',
+              width: '768px',
+              widthMedia: '992px',
+            },
+            {
+              id: 'mobilePortrait',
+              name: '手机',
+              width: '320px',
+              widthMedia: '575px',
+            },
+          ]
+        },
+        panels: {
+          defaults: [
+            {
+              id: 'panel-devices',
+              el: '.panel__devices',
+              buttons: [
+                {
+                  id: 'device-desktop',
+                  label: '<i class="fa fa-desktop"></i>',
+                  command: 'set-device-desktop',
+                  active: true,
+                  togglable: false,
+                },
+                {
+                  id: 'device-tablet',
+                  label: '<i class="fa fa-tablet-alt"></i>',
+                  command: 'set-device-tablet',
+                  togglable: false,
+                },
+                {
+                  id: 'device-mobile',
+                  label: '<i class="fa fa-mobile-alt"></i>',
+                  command: 'set-device-mobile',
+                  togglable: false,
+                }
+              ]
+            },
+            {
+              id: 'panel-switcher',
+              el: '.panel__switcher',
+              buttons: [
+                {
+                  id: 'show-blocks',
+                  active: true,
+                  label: '组件',
+                  command: 'show-blocks',
+                  togglable: false,
+                }
+              ]
+            }
+          ]
+        }
+      });
+      
+      // 添加面板到编辑器
+      editor.Panels.addPanel({
+        id: 'basic-actions',
+        el: '.panel__basic-actions',
+        buttons: [
+          {
+            id: 'visibility',
+            active: true,
+            className: 'btn-toggle-borders',
+            label: '<i class="fa fa-border-none"></i>',
+            command: 'sw-visibility',
+          },
+          {
+            id: 'export',
+            className: 'btn-open-export',
+            label: '<i class="fa fa-code"></i>',
+            command: 'export-template',
+            context: 'export-template',
+          },
+          {
+            id: 'undo',
+            className: 'btn-undo',
+            label: '<i class="fa fa-undo"></i>',
+            command: 'undo',
+          },
+          {
+            id: 'redo',
+            className: 'btn-redo',
+            label: '<i class="fa fa-redo"></i>',
+            command: 'redo',
+          }
+        ]
+      });
+      
+      // 编辑器加载完成后，添加一个示例内容
+      editor.on('load', () => {
+        editor.addComponents(`
+          <div style="padding: 20px; text-align: center;">
+            <h1 style="color: #333;">欢迎使用 AI 样式魔法棒</h1>
+            <p>从右侧拖入组件，然后选中组件，即可看到魔法棒图标。</p>
+            <p>点击魔法棒图标，输入你想要的样式描述，AI将自动为你应用样式。</p>
+            <p>试试输入："红色大字"、"蓝色粗体"、"按钮样式"或"卡片样式"等。</p>
+          </div>
+        `);
+      });
+      
+      // 添加示例命令
+      editor.Commands.add('show-blocks', {
+        run: (editor) => {
+          editor.BlockManager.render();
+        }
+      });
+      
+      // 添加事件监听器，输出当组件被选中时的提示
+      editor.on('component:selected', (component) => {
+        console.log('组件已选中，请查看组件上方的工具栏中的魔法棒图标！');
+      });
+    });
+  </script>
+</body>
+</html> 
