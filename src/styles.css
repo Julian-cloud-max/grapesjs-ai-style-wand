@@ -3,6 +3,19 @@
   font-family: Arial, sans-serif;
 }
 
+/* 魔法棒图标样式 */
+.gjs-toolbar-item[data-id="ai-style-wand"] svg {
+  fill: currentColor;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.gjs-toolbar-item[data-id="ai-style-wand"]:hover svg {
+  color: #4facfe;
+}
+
 .ai-style-wand-modal-header h3 {
   margin-top: 0;
   margin-bottom: 20px;
