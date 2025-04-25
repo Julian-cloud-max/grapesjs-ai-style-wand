@@ -1,160 +1,283 @@
-# GrapesJS AI Style Wand Plugin
+# GrapesJS AI Style Wand Plugin | GrapesJS AI 样式魔法棒插件
 
-一个为GrapesJS编辑器提供AI样式魔法棒功能的插件。用户可以通过简单的文本描述，让AI自动为组件应用样式。
+[English](#english) | [中文](#中文)
 
-## 功能特点
+# English
 
-- 在组件工具栏中添加魔法棒按钮
-- 点击魔法棒按钮打开样式输入弹窗
-- 用自然语言描述想要的样式效果
-- 自动将样式应用到选中的组件上
-- 提供丰富的样式快捷标签供直接点击使用
+A powerful GrapesJS plugin that allows quick style application through natural language descriptions.
 
-## 如何使用
+![Demo](./demo/demo.gif)
 
-1. 在画布上拖入一个组件（如文本、按钮等）
-2. 点击选中该组件
-3. 在组件上方会出现一个工具栏，其中包含魔法棒图标 <svg viewBox="0 0 24 24" width="16" height="16" style="display:inline-block;vertical-align:middle"><path fill="currentColor" d="M7.5,5.6L5,7L6.4,4.5L5,2L7.5,3.4L10,2L8.6,4.5L10,7L7.5,5.6M19.5,15.4L22,14L20.6,16.5L22,19L19.5,17.6L17,19L18.4,16.5L17,14L19.5,15.4M22,2L20.6,4.5L22,7L19.5,5.6L17,7L18.4,4.5L17,2L19.5,3.4L22,2M13.34,12.78L15.78,10.34L13.66,8.22L11.22,10.66L13.34,12.78M14.37,7.29L16.71,9.63C17.1,10 17.1,10.65 16.71,11.04L5.04,22.71C4.65,23.1 4,23.1 3.63,22.71L1.29,20.37C0.9,20 0.9,19.35 1.29,18.96L12.96,7.29C13.35,6.9 14,6.9 14.37,7.29Z"/></svg>
-4. 点击魔法棒图标，会打开样式输入弹窗
-5. 在弹窗中输入你想要的样式描述（例如："红色大字"、"按钮样式"等）
-6. 或者直接点击弹窗中的样式标签，快速添加常用样式
-7. 点击"应用样式"，样式会自动应用到选中的组件上
+## Features
 
-> **注意**：如果看不到魔法棒图标，请确保已完全选中组件，并且查看组件上方出现的工具栏中的所有图标。
+- 🎨 Apply styles quickly through natural language descriptions
+- 💡 Smart recognition of various style keywords
+- 🔥 Built-in common style combinations
+- 🎯 Support for quick application of preset style tags
+- 📱 Responsive design support
 
-## 安装
+## Installation
 
 ```bash
-npm install grapesjs-ai-style-wand
+npm i grapesjs-ai-style-wand
 ```
 
-## 使用方法
-
-### 浏览器引入
-
-```html
-<link href="path/to/grapes.min.css" rel="stylesheet"/>
-<script src="path/to/grapes.min.js"></script>
-<script src="path/to/grapesjs-ai-style-wand.min.js"></script>
-
-<div id="gjs"></div>
-
-<script type="text/javascript">
-  const editor = grapesjs.init({
-    container: '#gjs',
-    // ...
-    plugins: ['grapesjs-ai-style-wand'],
-    pluginsOpts: {
-      'grapesjs-ai-style-wand': {
-        // 可选配置
-      }
-    }
-  });
-</script>
-```
-
-### NPM方式引入
+## Usage
 
 ```js
 import grapesjs from 'grapesjs';
-import aiStyleWandPlugin from 'grapesjs-ai-style-wand';
+import aiStyleWand from 'grapesjs-ai-style-wand';
 
 const editor = grapesjs.init({
   container: '#gjs',
-  // ...
-  plugins: [aiStyleWandPlugin],
+  plugins: [aiStyleWand],
   pluginsOpts: {
-    [aiStyleWandPlugin]: {
-      // 可选配置
+    'grapesjs-ai-style-wand': {
+      // Configuration options
+      modalTitle: 'AI Style Wand',
+      buttonLabel: 'Magic Wand',
+      placeholder: 'Describe the style effect you want...',
+      applyBtnText: 'Apply Style',
+      cancelBtnText: 'Cancel'
     }
   }
 });
 ```
 
-## 配置选项
+## Supported Style Keywords
 
-| 选项 | 类型 | 默认值 | 描述 |
-|------|------|---------|-------------|
-| `modalTitle` | String | 'AI Style Wand' | 弹窗标题 |
-| `buttonLabel` | String | '魔法棒' | 工具栏按钮的标签 |
-| `placeholder` | String | '请描述想要的样式效果...' | 输入框的占位文本 |
-| `applyBtnText` | String | '应用样式' | 应用按钮的文本 |
-| `cancelBtnText` | String | '取消' | 取消按钮的文本 |
+### Colors
+- Text colors: red, deep red, pink, orange, yellow, gold, green, etc.
+- Background colors: red background, deep red background, pink background, etc.
 
-## 支持的样式描述
+### Size and Spacing
+- Font sizes: large, small, extra large, huge, tiny
+- Spacing: compact, loose, no spacing, top spacing, bottom spacing, etc.
 
-插件支持多种类型的样式描述，可以组合使用。以下是支持的样式类型：
+### Text Styles
+- Font weight: bold, light
+- Styles: italic, underline, strikethrough
+- Alignment: center, left, right, justify
+- Others: loose line height, tight line height, wide letter spacing, narrow letter spacing
+
+### Borders and Decorations
+- Shadows: shadow, light shadow, strong shadow, inner shadow
+- Border radius: rounded, slightly rounded, large rounded, fully rounded
+- Borders: border, thin border, thick border, dashed border, etc.
+
+### Preset Style Combinations
+- Button styles
+- Card styles
+- Heading styles
+- Navigation bar styles
+- Footer styles
+- Form styles
+- Input field styles
+
+## Future Improvements
+
+### Version 1.0.x (Current)
+- ✅ Local style mapping implementation for fast response
+- ✅ Basic style keyword support
+- ✅ Preset style combinations
+- ✅ Simple UI interface
+
+### Version 1.1.0 (Planned)
+- 🚀 AI API Integration
+  - OpenAI GPT API integration for more natural language understanding
+  - Custom AI model support
+  - Style generation based on context and design principles
+- 🎨 Enhanced Style Support
+  - More complex style combinations
+  - Animation and transition effects
+  - Responsive design patterns
+- 🛠 Customization Features
+  - Custom style keyword mapping
+  - User-defined style combinations
+  - Style template system
+
+### Version 1.2.0 (Future)
+- 🌐 Multi-language Support
+  - Complete internationalization
+  - Language-specific style descriptions
+- 🎯 Smart Suggestions
+  - Context-aware style recommendations
+  - Design pattern suggestions
+  - Accessibility improvements
+- 📊 Analytics and Optimization
+  - Usage statistics
+  - Performance optimization
+  - Style conflict resolution
+
+### Long-term Vision
+- 🤖 Advanced AI Features
+  - Style learning from existing designs
+  - Brand style guide integration
+  - Design system automation
+- 🔄 Real-time Collaboration
+  - Team style sharing
+  - Version control for styles
+  - Style library management
+- 🎓 Learning System
+  - Interactive tutorials
+  - Best practice suggestions
+  - Design principle guidance
+
+## Contributing
+
+We welcome Pull Requests to improve this plugin! Here are the steps:
+
+1. Fork this repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+MIT License - see [LICENSE](LICENSE) file
+
+
+
+---
+
+# 中文
+
+一个强大的 GrapesJS 插件，通过自然语言描述快速应用样式。
+
+## 功能特点
+
+- 🎨 通过自然语言描述快速应用样式
+- 💡 智能识别多种样式关键词
+- 🔥 内置多种常用样式组合
+- 🎯 支持快速应用预设样式标签
+- 📱 响应式设计支持
+
+## 安装
+
+```bash
+npm i grapesjs-ai-style-wand
+```
+
+## 使用方法
+
+```js
+import grapesjs from 'grapesjs';
+import aiStyleWand from 'grapesjs-ai-style-wand';
+
+const editor = grapesjs.init({
+  container: '#gjs',
+  plugins: [aiStyleWand],
+  pluginsOpts: {
+    'grapesjs-ai-style-wand': {
+      // 配置选项
+      modalTitle: 'AI 样式魔法棒',
+      buttonLabel: '魔法棒',
+      placeholder: '请描述想要的样式效果...',
+      applyBtnText: '应用样式',
+      cancelBtnText: '取消'
+    }
+  }
+});
+```
+
+## 支持的样式关键词
 
 ### 颜色相关
-- 文本颜色：红色、深红、粉红、橙色、黄色、金色、绿色、深绿、青色、蓝色、深蓝、天蓝、紫色、粉紫、棕色、黑色、白色、灰色、银色
-- 背景颜色：红色背景、深红背景、粉红背景、橙色背景、黄色背景...等（与文本颜色对应）
+- 文字颜色：红色、深红、粉红、橙色、黄色、金色、绿色等
+- 背景颜色：红色背景、深红背景、粉红背景、橙色背景等
 
 ### 尺寸和间距
 - 字体大小：大、小、超大、特大、极小
-- 间距控制：紧凑、宽松、无间距、上间距、下间距、左间距、右间距、内部间距
+- 间距：紧凑、宽松、无间距、上间距、下间距等
 
 ### 文本样式
 - 字重：粗体、细体
 - 样式：斜体、下划线、删除线
-- 大小写：大写、小写、首字母大写
 - 对齐：居中、左对齐、右对齐、两端对齐
-- 行高：行高松、行高紧
-- 字间距：字间距宽、字间距窄
+- 其他：行高松、行高紧、字间距宽、字间距窄
 
 ### 边框和装饰
 - 阴影：阴影、轻微阴影、强烈阴影、内阴影
 - 圆角：圆角、轻微圆角、大圆角、完全圆角
-- 边框：边框、细边框、粗边框、虚线边框、点线边框、双线边框、红色边框、绿色边框、蓝色边框
-
-### 显示和定位
-- 显示方式：隐藏、可见、内联、内联块
-- 浮动：浮动左、浮动右、清除浮动
-- 定位：绝对定位、相对定位、固定定位
-- 尺寸：全宽、半宽、全高
-- 溢出控制：溢出隐藏、溢出滚动、可见溢出
-
-### 过渡和动画
-- 过渡：平滑过渡、快速过渡、慢速过渡
-- 鼠标样式：手型鼠标、禁用鼠标、等待鼠标、帮助鼠标
-
-### 特殊效果
-- 透明度：透明、半透明、不透明
-- 滤镜：模糊
-- 背景效果：高亮、渐变背景、水平渐变、垂直渐变
-- 变换：旋转、缩放、移动
-- 交互：悬停效果
+- 边框：边框、细边框、粗边框、虚线边框等
 
 ### 预设组合样式
-- 按钮样式：适合按钮的预设样式
-- 卡片样式：适合卡片的预设样式
-- 标题样式：适合标题的预设样式
-- 导航栏样式：适合导航栏的预设样式
-- 页脚样式：适合页脚的预设样式
-- 表单样式：适合表单的预设样式
-- 输入框样式：适合输入框的预设样式
+- 按钮样式
+- 卡片样式
+- 标题样式
+- 导航栏样式
+- 页脚样式
+- 表单样式
+- 输入框样式
 
-## 开发
+## 未来改进计划
 
-克隆仓库并安装依赖:
+### 版本 1.0.x（当前）
+- ✅ 本地样式映射实现，确保快速响应
+- ✅ 基础样式关键词支持
+- ✅ 预设样式组合
+- ✅ 简单的用户界面
 
-```bash
-git clone https://github.com/yourusername/grapesjs-ai-style-wand.git
-cd grapesjs-ai-style-wand
-npm i
-```
+### 版本 1.1.0（计划中）
+- 🚀 AI API 集成
+  - 集成 OpenAI GPT API 实现更自然的语言理解
+  - 支持自定义 AI 模型
+  - 基于上下文和设计原则的样式生成
+- 🎨 增强样式支持
+  - 更复杂的样式组合
+  - 动画和过渡效果
+  - 响应式设计模式
+- 🛠 自定义功能
+  - 自定义样式关键词映射
+  - 用户自定义样式组合
+  - 样式模板系统
 
-启动开发服务器:
+### 版本 1.2.0（未来）
+- 🌐 多语言支持
+  - 完整的国际化支持
+  - 语言特定的样式描述
+- 🎯 智能建议
+  - 上下文感知的样式推荐
+  - 设计模式建议
+  - 可访问性改进
+- 📊 分析和优化
+  - 使用统计
+  - 性能优化
+  - 样式冲突解决
 
-```bash
-npm start
-```
+### 长期愿景
+- 🤖 高级 AI 功能
+  - 从现有设计中学习样式
+  - 品牌样式指南集成
+  - 设计系统自动化
+- 🔄 实时协作
+  - 团队样式共享
+  - 样式版本控制
+  - 样式库管理
+- 🎓 学习系统
+  - 交互式教程
+  - 最佳实践建议
+  - 设计原则指导
 
-构建项目:
+## 贡献指南
 
-```bash
-npm run build
-```
+欢迎提交 Pull Request 来改进这个插件！以下是贡献步骤：
+
+1. Fork 这个仓库
+2. 创建你的特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交你的改动 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启一个 Pull Request
 
 ## 许可证
 
-MIT 
+MIT License - 详见 [LICENSE](LICENSE) 文件
+
+
+## 更新日志
+
+### 1.0.0
+- 初始版本发布
+- 支持基本样式应用
+- 添加预设样式组合 
