@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-ai-style-wand",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GrapesJS插件 - AI样式魔法棒：通过自然语言描述轻松设置组件样式",
   "main": "dist/grapesjs-ai-style-wand.min.js",
   "scripts": {

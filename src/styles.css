@@ -16,10 +16,146 @@
   color: #4facfe;
 }
 
-.ai-style-wand-modal-header h3 {
+.ai-style-wand-modal-header {
   margin-top: 0;
   margin-bottom: 20px;
   color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ai-style-wand-modal-header h3 {
+  margin: 0;
+}
+
+/* 自定义标题栏样式 */
+.gjs-modal-title-with-help {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: calc(100% - 30px);  /* 为关闭按钮留出空间 */
+  padding: 0 5px;
+}
+
+.gjs-modal-title-with-help span {
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+/* 问号图标在标题栏中的样式 */
+.gjs-modal-title-with-help .ai-help-icon {
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+
+.gjs-modal-title-with-help .ai-help-icon:hover {
+  color: #4facfe;
+  background-color: rgba(79, 172, 254, 0.1);
+}
+
+/* 指令帮助弹窗样式 */
+.ai-commands-help {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+  z-index: 100001; /* 确保高于模态窗口 */
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ai-commands-help-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  background-color: #f9f9f9;
+  flex-shrink: 0;
+}
+
+.ai-commands-help-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ai-commands-help-close {
+  cursor: pointer;
+  font-size: 24px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.ai-commands-help-close:hover {
+  background-color: #eaeaea;
+  color: #333;
+}
+
+.ai-commands-help-content {
+  padding: 15px 20px;
+  overflow-y: auto;
+  max-height: calc(80vh - 60px);
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f5f5f5;
+}
+
+.ai-commands-help-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ai-commands-help-content::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.ai-commands-help-content::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.ai-commands-section {
+  margin-bottom: 20px;
+}
+
+.ai-commands-section h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ai-commands-section p {
+  margin: 8px 0;
+  color: #555;
+  line-height: 1.6;
+  font-size: 13px;
+  word-wrap: break-word;
 }
 
 .ai-style-wand-modal-body {
@@ -51,7 +187,6 @@
   font-size: 12px;
   color: #333;
   cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
 .ai-style-tag:hover {
@@ -87,5 +222,57 @@
 }
 
 .ai-style-cancel-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* 未支持指令提示弹窗样式 */
+.ai-style-alert-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100002; /* 确保在所有弹窗之上 */
+}
+
+.ai-style-alert-content {
+  background-color: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ai-style-alert-content p {
+  margin: 5px 0;
+  color: #333;
+}
+
+.ai-style-alert-content p:first-child {
+  font-weight: bold;
+  font-size: 16px;
+  color: #e74c3c;
+}
+
+.ai-style-alert-close {
+  margin-top: 15px;
+  padding: 8px 25px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.ai-style-alert-close:hover {
   background-color: #e0e0e0;
 } 
